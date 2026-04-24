@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace AutokMozgatasa;
+namespace AutokMozgasa;
 class Jeladas
 {
     public string Rendszam { get; set; }
@@ -42,14 +42,12 @@ class Program
         Jeladas utolso = jeladasok[jeladasok.Count - 1];
         Console.WriteLine("2. feladat:");
         Console.WriteLine($"Az utolsó jeladás időpontja {utolso.Ora}:{utolso.Perc:D2}, a jármű rendszáma {utolso.Rendszam}");
-        Console.WriteLine();
 
         Console.WriteLine("3. feladat:");
         Console.WriteLine($"Az első jármű: {elsoJarmu}");
         List<Jeladas> elsoJarmuJeladasok = jarmuJeladasok[elsoJarmu];
         string idopontok = string.Join(" ", elsoJarmuJeladasok.Select(j => $"{j.Ora}:{j.Perc}"));
         Console.WriteLine($"Jeladásainak időpontjai: {idopontok}");
-        Console.WriteLine();
 
         Console.WriteLine("4. feladat:");
         Console.Write("Kérem, adja meg az órát: ");
@@ -58,14 +56,12 @@ class Program
         int bekertPerc = int.Parse(Console.ReadLine());
         int darab = jeladasok.Count(j => j.Ora == bekertOra && j.Perc == bekertPerc);
         Console.WriteLine($"A jeladások száma: {darab}");
-        Console.WriteLine();
 
         Console.WriteLine("5. feladat:");
         int maxSeb = jeladasok.Max(j => j.Sebesseg);
         var maxRendszamok = jeladasok.Where(j => j.Sebesseg == maxSeb).Select(j => j.Rendszam);
         Console.WriteLine($"A legnagyobb sebesség km/h: {maxSeb}");
         Console.WriteLine($"A járművek: {string.Join(" ", maxRendszamok)}");
-        Console.WriteLine();
 
         Console.WriteLine("6. feladat:");
         Console.Write("Kérem, adja meg a rendszámot: ");
@@ -92,7 +88,6 @@ class Program
                 }
             }
         }
-        Console.WriteLine();
 
         using (StreamWriter sw = new StreamWriter("ido.txt"))
         {
